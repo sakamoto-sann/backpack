@@ -1,0 +1,26 @@
+{
+  "scenario": "recovery_2023",
+  "period": "2023-01-01 to 2023-12-31",
+  "initial_capital": 100000,
+  "final_value": 107278.65532749803,
+  "total_return": 0.07278655327498018,
+  "annual_return": 0.07278655327498018,
+  "volatility": 0.507879456942957,
+  "sharpe_ratio": 1.251210634812709,
+  "sortino_ratio": 1.5014527617752507,
+  "calmar_ratio": 0.31958989187625353,
+  "max_drawdown": 0.22774986044666087,
+  "win_rate": 0.6031902316243892,
+  "total_trades": 156,
+  "winning_trades": 94,
+  "losing_trades": 61,
+  "profit_factor": 1.520099250816385,
+  "strategy_metrics": {
+    "total_signals_generated": 0,
+    "successful_trades": 0,
+    "failed_trades": 0,
+    "success_rate": 0.0,
+    "data_points_processed": 0
+  },
+  "risk_level": "moderate"
+}

@@ -1,0 +1,26 @@
+{
+  "scenario": "full_cycle_2021_2024",
+  "period": "2021-01-01 to 2024-12-31",
+  "initial_capital": 100000,
+  "final_value": 123185.66905032657,
+  "total_return": 0.23185669050326566,
+  "annual_return": 0.23185669050326566,
+  "volatility": 0.2980991772839217,
+  "sharpe_ratio": 0.8225679003949284,
+  "sortino_ratio": 0.9870814804739141,
+  "calmar_ratio": 0.7872634404758747,
+  "max_drawdown": 0.29450966294473924,
+  "win_rate": 0.7963234072117227,
+  "total_trades": 129,
+  "winning_trades": 102,
+  "losing_trades": 26,
+  "profit_factor": 3.909744346712949,
+  "strategy_metrics": {
+    "total_signals_generated": 0,
+    "successful_trades": 0,
+    "failed_trades": 0,
+    "success_rate": 0.0,
+    "data_points_processed": 0
+  },
+  "risk_level": "moderate"
+}

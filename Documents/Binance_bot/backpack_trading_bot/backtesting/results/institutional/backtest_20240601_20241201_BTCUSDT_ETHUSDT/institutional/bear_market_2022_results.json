@@ -1,0 +1,26 @@
+{
+  "scenario": "bear_market_2022",
+  "period": "2022-01-01 to 2022-12-31",
+  "initial_capital": 100000,
+  "final_value": 106905.31973057541,
+  "total_return": 0.06905319730575425,
+  "annual_return": 0.06905319730575425,
+  "volatility": 0.5629471098719971,
+  "sharpe_ratio": 0.3511619728450937,
+  "sortino_ratio": 0.42139436741411246,
+  "calmar_ratio": 0.23235063543197543,
+  "max_drawdown": 0.2971939249375143,
+  "win_rate": 0.5940753190869179,
+  "total_trades": 148,
+  "winning_trades": 87,
+  "losing_trades": 60,
+  "profit_factor": 1.4635112054546968,
+  "strategy_metrics": {
+    "total_signals_generated": 0,
+    "successful_trades": 0,
+    "failed_trades": 0,
+    "success_rate": 0.0,
+    "data_points_processed": 0
+  },
+  "risk_level": "conservative"
+}

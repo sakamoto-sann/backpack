@@ -1,0 +1,175 @@
+# Binance Trading Bot Configuration
+# Main trading parameters and strategy settings
+
+# API Configuration
+api:
+  # Binance API credentials (set via environment variables)
+  key: ${BINANCE_API_KEY}
+  secret: ${BINANCE_API_SECRET}
+  testnet: false
+  
+# Trading Strategy Configuration
+strategy:
+  # Primary strategy type: 'grid_trading', 'arbitrage', 'delta_neutral', 'advanced'
+  type: 'grid_trading'
+  
+  # Grid Trading Strategy
+  grid_trading:
+    # Basic Parameters
+    base_currency: 'USDT'
+    quote_currency: 'BTC'
+    trading_pair: 'BTCUSDT'
+    
+    # Grid Configuration
+    grid_count: 20
+    grid_spacing: 0.005  # 0.5% spacing between grid levels
+    base_order_size: 100  # USDT per order
+    
+    # Supertrend Enhancement (v3.0)
+    supertrend_enabled: true
+    supertrend_period: 10
+    supertrend_multiplier: 3.0
+    adaptive_supertrend_enabled: true
+    adaptive_supertrend_base_period: 10
+    adaptive_supertrend_base_multiplier: 2.5
+    supertrend_signal_weight: 0.3
+    signal_agreement_bonus: 0.05
+    
+    # Market Regime Detection
+    market_regime:
+      ma_fast: 12
+      ma_slow: 26
+      atr_period: 14
+      volatility_periods: [20, 50, 100]
+      breakout_threshold: 2.0
+      sideways_threshold: 0.02
+      
+  # Arbitrage Strategy
+  arbitrage:
+    # Trading pairs for triangular arbitrage
+    trading_pairs:
+      - ['BTCUSDT', 'ETHBTC', 'ETHUSDT']
+      - ['BTCUSDT', 'ADABTC', 'ADAUSDT']
+      - ['BTCUSDT', 'BNBBTC', 'BNBUSDT']
+    
+    # Arbitrage Parameters
+    trade_amount: 100  # Base amount in USDT
+    min_profit_threshold: 0.1  # Minimum profit % to execute
+    min_trade_interval: 30  # Minimum seconds between trades
+    
+  # Delta Neutral Strategy
+  delta_neutral:
+    # Trading Configuration
+    spot_symbol: 'BTCUSDT'
+    futures_symbol: 'BTCUSDT'
+    base_position_size: 1000  # USDT
+    hedge_ratio: 0.95  # Hedge 95% of delta
+    
+    # Grid Parameters
+    grid_levels: 10
+    grid_spacing: 0.003  # 0.3% spacing
+    rebalance_threshold: 0.05  # 5% delta threshold
+    
+  # Advanced Multi-Strategy
+  advanced:
+    # Strategy weights
+    strategy_weights:
+      grid_trading: 0.4
+      arbitrage: 0.3
+      delta_neutral: 0.3
+    
+    # Multi-timeframe analysis
+    timeframes: ['1m', '5m', '15m', '1h', '4h', '1d']
+    signal_weights: [0.1, 0.15, 0.2, 0.25, 0.2, 0.1]
+
+# Position Management
+position:
+  # Maximum position size (% of balance)
+  max_position_size: 0.8
+  
+  # Position sizing method: 'fixed', 'percentage', 'kelly'
+  sizing_method: 'percentage'
+  
+  # Base position size (% of balance for percentage method)
+  base_position_pct: 0.1
+  
+  # Portfolio allocation per strategy
+  allocation:
+    grid_trading: 0.5
+    arbitrage: 0.3
+    delta_neutral: 0.2
+
+# Performance Tracking
+performance:
+  # Tracking intervals
+  track_intervals: ['1h', '4h', '1d', '1w', '1M']
+  
+  # Performance metrics to calculate
+  metrics:
+    - 'total_return'
+    - 'annual_return'
+    - 'sharpe_ratio'
+    - 'max_drawdown'
+    - 'win_rate'
+    - 'profit_factor'
+    - 'calmar_ratio'
+  
+  # Benchmark comparison
+  benchmark_symbol: 'BTCUSDT'
+  
+  # Performance reporting
+  daily_report: true
+  weekly_report: true
+  monthly_report: true
+
+# Logging Configuration
+logging:
+  level: 'INFO'
+  file: 'logs/trading_bot.log'
+  max_bytes: 10485760  # 10MB
+  backup_count: 5
+  
+  # Log different components
+  components:
+    trading: 'INFO'
+    arbitrage: 'INFO'
+    risk: 'WARNING'
+    performance: 'INFO'
+    websocket: 'WARNING'
+
+# Notifications
+notifications:
+  telegram:
+    enabled: false
+    bot_token: ${TELEGRAM_BOT_TOKEN}
+    chat_id: ${TELEGRAM_CHAT_ID}
+    
+    # Notification triggers
+    triggers:
+      - 'trade_executed'
+      - 'risk_breach'
+      - 'system_error'
+      - 'daily_summary'
+  
+  email:
+    enabled: false
+    smtp_server: ${SMTP_SERVER}
+    smtp_port: 587
+    username: ${SMTP_USERNAME}
+    password: ${SMTP_PASSWORD}
+    to_email: ${NOTIFICATION_EMAIL}
+
+# Development and Testing
+development:
+  paper_trading: true
+  simulation_mode: false
+  backtest_mode: false
+  
+  # Test parameters
+  test_duration: '1h'
+  test_pairs: ['BTCUSDT', 'ETHUSDT']
+  
+  # Debug settings
+  debug_mode: false
+  verbose_logging: false
+  save_debug_data: false

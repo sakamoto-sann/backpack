@@ -1,0 +1,354 @@
+{
+  "mcp_test_session": {
+    "session_id": "mcp_test_1752055008",
+    "start_time": "2025-07-09T16:56:48.386376",
+    "end_time": "2025-07-09T16:56:49.544879",
+    "total_execution_time": 1.15845,
+    "protocol_version": "1.0"
+  },
+  "test_summary": {
+    "total_tests": 12,
+    "passed_tests": 10,
+    "warning_tests": 1,
+    "failed_tests": 1,
+    "success_rate": 0.8333333333333334,
+    "avg_execution_time": 0.09621167182922363
+  },
+  "test_results": [
+    {
+      "test_name": "bot_initialization",
+      "status": "PASS",
+      "execution_time": 0.1854689121246338,
+      "timestamp": "2025-07-09T16:56:48.572485",
+      "details": {
+        "sol_balance": 0.1,
+        "trading_pairs": 4,
+        "trading_mode": "high_frequency_volume"
+      },
+      "recommendations": [
+        "Bot initialized successfully"
+      ]
+    },
+    {
+      "test_name": "api_connectivity",
+      "status": "PASS",
+      "execution_time": 0.40404582023620605,
+      "timestamp": "2025-07-09T16:56:48.976592",
+      "details": {
+        "spot_api": true,
+        "futures_api": true,
+        "lending_api": true,
+        "websocket_api": true
+      },
+      "recommendations": [
+        "All APIs connected"
+      ]
+    },
+    {
+      "test_name": "configuration_validation",
+      "status": "PASS",
+      "execution_time": 0.05666208267211914,
+      "timestamp": "2025-07-09T16:56:49.033775",
+      "details": {
+        "validations": {
+          "api_config": true,
+          "hf_config": true,
+          "delta_neutral_config": true,
+          "sol_collateral_config": true,
+          "performance_targets": true
+        },
+        "critical_checks": {
+          "volume_target": true,
+          "grid_interval": true,
+          "delta_tolerance": true,
+          "collateral_target": true
+        }
+      },
+      "recommendations": [
+        "Configuration valid"
+      ]
+    },
+    {
+      "test_name": "delta_neutral_functionality",
+      "status": "WARNING",
+      "execution_time": 4.601478576660156e-05,
+      "timestamp": "2025-07-09T16:56:49.033920",
+      "details": {
+        "delta_tests": {
+          "scenario_1": {
+            "calculated_delta": 0.0,
+            "within_tolerance": true,
+            "scenario": {
+              "spot_position": 1.0,
+              "futures_position": -1.0,
+              "expected_delta": 0.0
+            }
+          },
+          "scenario_2": {
+            "calculated_delta": 0.020000000000000018,
+            "within_tolerance": false,
+            "scenario": {
+              "spot_position": 0.5,
+              "futures_position": -0.48,
+              "expected_delta": 0.02
+            }
+          },
+          "scenario_3": {
+            "calculated_delta": -0.10000000000000009,
+            "within_tolerance": false,
+            "scenario": {
+              "spot_position": 2.0,
+              "futures_position": -2.1,
+              "expected_delta": -0.1
+            }
+          }
+        },
+        "rebalancing_tests": {
+          "high_delta_trigger": true,
+          "normal_delta_ok": true,
+          "emergency_delta": true
+        }
+      },
+      "recommendations": [
+        "Review delta-neutral parameters"
+      ]
+    },
+    {
+      "test_name": "high_frequency_performance",
+      "status": "PASS",
+      "execution_time": 0.37386012077331543,
+      "timestamp": "2025-07-09T16:56:49.407836",
+      "details": {
+        "metrics": {
+          "grid_update_speed": 0.10116219520568848,
+          "order_execution_speed": 0.05054783821105957,
+          "rebalance_speed": 0.20099496841430664,
+          "api_call_latency": 0.021099090576171875
+        },
+        "benchmarks": {
+          "grid_update_target": 5.0,
+          "execution_target": 0.2,
+          "rebalance_target": 15.0,
+          "latency_target": 0.1
+        },
+        "results": {
+          "grid_update_ok": true,
+          "execution_ok": true,
+          "rebalance_ok": true,
+          "latency_ok": true
+        },
+        "performance_score": 1.0
+      },
+      "recommendations": [
+        "HF performance score: 100.00%"
+      ]
+    },
+    {
+      "test_name": "risk_management",
+      "status": "PASS",
+      "execution_time": 0.04460883140563965,
+      "timestamp": "2025-07-09T16:56:49.452835",
+      "details": {
+        "scenarios": {
+          "high_delta_scenario": {
+            "delta": 0.06,
+            "should_trigger_emergency": true
+          },
+          "high_loss_scenario": {
+            "daily_loss": 0.04,
+            "should_reduce_positions": true
+          },
+          "high_collateral_scenario": {
+            "collateral_usage": 0.95,
+            "should_warn": true
+          },
+          "api_error_scenario": {
+            "consecutive_errors": 6,
+            "should_recover": true
+          }
+        },
+        "results": {
+          "high_delta_scenario": true,
+          "high_loss_scenario": true,
+          "high_collateral_scenario": true,
+          "api_error_scenario": true
+        }
+      },
+      "recommendations": [
+        "Risk management working"
+      ]
+    },
+    {
+      "test_name": "funding_arbitrage",
+      "status": "PASS",
+      "execution_time": 0.00020623207092285156,
+      "timestamp": "2025-07-09T16:56:49.453456",
+      "details": {
+        "scenarios": [
+          {
+            "rate": 0.001,
+            "expected_action": "long_spot_short_futures"
+          },
+          {
+            "rate": -0.001,
+            "expected_action": "short_spot_long_futures"
+          },
+          {
+            "rate": 0.0001,
+            "expected_action": "no_action"
+          }
+        ],
+        "results": {
+          "scenario_1": true,
+          "scenario_2": true,
+          "scenario_3": true
+        }
+      },
+      "recommendations": [
+        "Funding arbitrage working"
+      ]
+    },
+    {
+      "test_name": "cross_pair_arbitrage",
+      "status": "PASS",
+      "execution_time": 0.00016617774963378906,
+      "timestamp": "2025-07-09T16:56:49.453797",
+      "details": {
+        "opportunities": [
+          {
+            "pairs": [
+              "SOL_USDC",
+              "BTC_USDC",
+              "SOL_BTC"
+            ],
+            "profit_pct": 0.001,
+            "should_execute": true
+          },
+          {
+            "pairs": [
+              "ETH_USDC",
+              "BTC_USDC",
+              "ETH_BTC"
+            ],
+            "profit_pct": 0.0001,
+            "should_execute": false
+          }
+        ],
+        "results": {
+          "opportunity_1": true,
+          "opportunity_2": true
+        }
+      },
+      "recommendations": [
+        "Arbitrage logic working"
+      ]
+    },
+    {
+      "test_name": "volume_optimization",
+      "status": "PASS",
+      "execution_time": 0.00014781951904296875,
+      "timestamp": "2025-07-09T16:56:49.454108",
+      "details": {
+        "metrics": {
+          "current_volume": 500,
+          "target_volume": 1000,
+          "volume_efficiency": 0.5,
+          "transaction_count": 50,
+          "avg_transaction_size": 10
+        },
+        "tests": {
+          "volume_below_target": true,
+          "efficiency_needs_improvement": true,
+          "transaction_frequency_ok": true,
+          "transaction_size_ok": true
+        },
+        "should_optimize": true
+      },
+      "recommendations": [
+        "Volume optimization triggered"
+      ]
+    },
+    {
+      "test_name": "competition_metrics",
+      "status": "FAIL",
+      "execution_time": 0.0001590251922607422,
+      "timestamp": "2025-07-09T16:56:49.454421",
+      "details": {
+        "metrics": {
+          "volume_rank_estimate": 8,
+          "pnl_rank_estimate": 4,
+          "daily_volume": 750,
+          "daily_pnl": 0.008,
+          "transaction_count": 75
+        },
+        "targets": {
+          "volume_rank_target": 5,
+          "pnl_rank_target": 3,
+          "volume_target": 1000,
+          "pnl_target": 0.012
+        },
+        "analysis": {
+          "volume_rank_achieved": false,
+          "pnl_rank_achieved": false,
+          "volume_target_met": false,
+          "pnl_target_met": false
+        },
+        "success_rate": 0.0
+      },
+      "recommendations": [
+        "Competition success rate: 0.00%"
+      ]
+    },
+    {
+      "test_name": "error_handling",
+      "status": "PASS",
+      "execution_time": 0.044644832611083984,
+      "timestamp": "2025-07-09T16:56:49.499219",
+      "details": {
+        "scenarios": {
+          "api_timeout": true,
+          "network_error": true,
+          "invalid_response": true,
+          "rate_limit_error": true
+        },
+        "recovery": {
+          "timeout_recovery": true,
+          "network_recovery": true,
+          "response_recovery": true,
+          "rate_limit_recovery": true
+        }
+      },
+      "recommendations": [
+        "Error handling robust"
+      ]
+    },
+    {
+      "test_name": "emergency_procedures",
+      "status": "PASS",
+      "execution_time": 0.044524192810058594,
+      "timestamp": "2025-07-09T16:56:49.544268",
+      "details": {
+        "emergency_stop": true,
+        "position_reduction": true,
+        "delta_rebalance": true,
+        "api_recovery": true
+      },
+      "recommendations": [
+        "Emergency procedures working"
+      ]
+    }
+  ],
+  "overall_assessment": {
+    "grade": "GOOD",
+    "success_rate": 0.8333333333333334,
+    "recommendation": "Bot ready with minor optimizations"
+  },
+  "recommendations": [
+    "Implement gradual position sizing for initial deployment",
+    "Set up comprehensive logging and alerts",
+    "Competition success rate: 0.00%",
+    "Regular performance reviews and optimization",
+    "Monitor bot performance in live environment",
+    "Review delta-neutral parameters"
+  ]
+}

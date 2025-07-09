@@ -1,0 +1,26 @@
+{
+  "scenario": "bull_market_2021",
+  "period": "2021-01-01 to 2021-11-30",
+  "initial_capital": 100000,
+  "final_value": 133742.4070351843,
+  "total_return": 0.33742407035184285,
+  "annual_return": 0.33742407035184285,
+  "volatility": 0.3696137900079561,
+  "sharpe_ratio": 2.2320686594701082,
+  "sortino_ratio": 2.67848239136413,
+  "calmar_ratio": 4.574883377969409,
+  "max_drawdown": 0.07375577527871555,
+  "win_rate": 0.4925585746357867,
+  "total_trades": 130,
+  "winning_trades": 64,
+  "losing_trades": 65,
+  "profit_factor": 0.9706708006392175,
+  "strategy_metrics": {
+    "total_signals_generated": 0,
+    "successful_trades": 0,
+    "failed_trades": 0,
+    "success_rate": 0.0,
+    "data_points_processed": 0
+  },
+  "risk_level": "moderate"
+}

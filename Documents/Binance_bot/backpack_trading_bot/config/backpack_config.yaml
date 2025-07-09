@@ -1,0 +1,324 @@
+# 🚀 Backpack SOL Collateral Bot Configuration
+# Optimized for Backpack Exchange Volume & PnL Competitions
+
+# Backpack API Configuration
+api:
+  base_url: "https://api.backpack.exchange"
+  key: ${BACKPACK_API_KEY}
+  secret: ${BACKPACK_API_SECRET}
+  testnet: false
+  
+  # Rate limiting (from Backpack docs)
+  rate_limits:
+    requests_per_minute: 6000
+    orders_per_minute: 1200
+    websocket_connections: 5
+    
+# SOL Collateral Strategy
+sol_collateral:
+  # Starting capital
+  starting_amount: 1.0  # 1 SOL
+  
+  # Collateral management
+  collateral_utilization_target: 0.80  # 80% utilization
+  emergency_buffer: 0.15  # 15% emergency buffer
+  max_collateral_ratio: 0.95  # 95% max before emergency
+  
+  # Auto lending configuration
+  auto_lending:
+    enabled: true
+    lending_percentage: 0.60  # 60% of SOL for lending
+    min_lending_apy: 0.02  # 2% minimum APY
+    rebalance_threshold: 0.005  # 0.5% APY change trigger
+    
+# Multi-Asset Grid Trading
+grid_trading:
+  # Primary trading pairs for competition
+  pairs:
+    - symbol: "SOL_USDC"
+      allocation: 0.30  # 30% of available collateral
+      grid_levels: 25
+      grid_spacing: 0.003  # 0.3% for SOL volatility
+      min_order_size: 0.01  # Minimum order size
+      max_position_size: 0.5  # Max 50% of allocation
+      
+    - symbol: "BTC_USDC"
+      allocation: 0.25  # 25% of available collateral
+      grid_levels: 20
+      grid_spacing: 0.002  # 0.2% for BTC
+      min_order_size: 0.0001
+      max_position_size: 0.4
+      
+    - symbol: "ETH_USDC"
+      allocation: 0.25  # 25% of available collateral
+      grid_levels: 20
+      grid_spacing: 0.0025  # 0.25% for ETH
+      min_order_size: 0.001
+      max_position_size: 0.4
+      
+    - symbol: "USDT_USDC"
+      allocation: 0.20  # 20% of available collateral
+      grid_levels: 50
+      grid_spacing: 0.0005  # 0.05% for stablecoin
+      min_order_size: 1.0
+      max_position_size: 0.8
+  
+  # Grid optimization
+  optimization:
+    rebalance_frequency: 30  # 30 seconds
+    grid_adjustment_threshold: 0.01  # 1% price movement
+    emergency_cancel_threshold: 0.05  # 5% adverse movement
+    
+# Competition Strategy
+competition:
+  # Volume competition optimization
+  volume_competition:
+    enabled: true
+    target_daily_volume: 50000  # $50k daily volume target
+    high_frequency_mode: true
+    min_spread_capture: 0.0005  # 0.05% minimum spread
+    
+    # Volume boosting techniques
+    volume_boost:
+      ping_pong_trading: true  # Rapid buy/sell cycles
+      cross_pair_arbitrage: true
+      wash_trading_avoidance: true  # Ensure legitimate volume
+      
+  # PnL competition optimization  
+  pnl_competition:
+    enabled: true
+    target_monthly_return: 0.25  # 25% monthly return target
+    risk_adjusted_trading: true
+    profit_taking_levels: [0.02, 0.05, 0.10]  # 2%, 5%, 10%
+    
+    # PnL maximization techniques
+    pnl_boost:
+      momentum_trading: true
+      mean_reversion: true
+      funding_rate_capture: true
+      lending_income_optimization: true
+      
+  # Competition timing
+  timing:
+    competition_start_hour: 0  # UTC midnight
+    competition_end_hour: 23  # UTC 11 PM
+    peak_trading_hours: [14, 15, 16, 17, 18, 19, 20, 21]  # UTC
+    
+# Delta-Neutral Strategy
+delta_neutral:
+  enabled: true
+  
+  # Futures hedging
+  futures_hedging:
+    hedge_ratio: 0.95  # 95% hedge ratio
+    rebalance_threshold: 0.02  # 2% delta threshold
+    emergency_hedge_threshold: 0.05  # 5% emergency hedge
+    
+  # Funding rate capture
+  funding_capture:
+    enabled: true
+    min_funding_rate: 0.0001  # 0.01% minimum
+    target_funding_rate: 0.001  # 0.1% target
+    position_sizing_multiplier: 1.5  # 1.5x size for high funding
+    
+# Risk Management
+risk_management:
+  # Position limits
+  position_limits:
+    max_position_per_pair: 0.25  # 25% of capital per pair
+    max_total_exposure: 0.80  # 80% total exposure
+    emergency_stop_loss: 0.10  # 10% stop loss
+    
+  # Collateral monitoring
+  collateral_monitoring:
+    warning_threshold: 0.85  # 85% utilization warning
+    emergency_threshold: 0.95  # 95% utilization emergency
+    liquidation_buffer: 0.05  # 5% buffer from liquidation
+    
+  # Risk controls
+  risk_controls:
+    max_daily_loss: 0.05  # 5% max daily loss
+    max_drawdown: 0.15  # 15% max drawdown
+    consecutive_loss_limit: 5  # Max 5 consecutive losses
+    
+# Performance Tracking
+performance:
+  # Competition metrics
+  competition_metrics:
+    - total_volume
+    - daily_volume
+    - transaction_count
+    - volume_rank_estimate
+    - total_pnl
+    - daily_pnl
+    - pnl_rank_estimate
+    - win_rate
+    
+  # Trading metrics
+  trading_metrics:
+    - grid_efficiency
+    - collateral_utilization
+    - lending_income
+    - funding_income
+    - arbitrage_profit
+    - sharpe_ratio
+    
+  # Reporting
+  reporting:
+    real_time_updates: true
+    hourly_reports: true
+    daily_summaries: true
+    competition_rankings: true
+    
+# Optimization
+optimization:
+  # Dynamic optimization
+  dynamic_optimization:
+    enabled: true
+    optimization_interval: 300  # 5 minutes
+    
+    # Parameters to optimize
+    optimize_parameters:
+      - grid_spacing
+      - position_sizes
+      - rebalance_frequency
+      - collateral_utilization
+      
+  # Machine learning
+  ml_optimization:
+    enabled: false  # Disabled for initial version
+    model_type: "reinforcement_learning"
+    training_period: 7  # 7 days
+    
+  # A/B testing
+  ab_testing:
+    enabled: false
+    test_duration: 86400  # 24 hours
+    
+# Monitoring and Alerts
+monitoring:
+  # Real-time monitoring
+  real_time:
+    enabled: true
+    update_interval: 10  # 10 seconds
+    
+  # Health checks
+  health_checks:
+    api_connectivity: 30  # 30 seconds
+    collateral_status: 60  # 1 minute
+    order_status: 30  # 30 seconds
+    lending_status: 300  # 5 minutes
+    
+  # Alerts
+  alerts:
+    high_collateral_usage: 0.90  # 90%
+    low_pnl_performance: -0.02  # -2%
+    api_errors: 3  # 3 consecutive errors
+    competition_rank_drop: 10  # Rank drop by 10
+    
+# Logging
+logging:
+  level: "INFO"
+  file: "logs/backpack_sol_bot.log"
+  max_size: 50MB
+  backup_count: 10
+  
+  # Component logging
+  components:
+    grid_trading: "INFO"
+    collateral_manager: "INFO"
+    competition_tracker: "INFO"
+    risk_manager: "WARNING"
+    api_client: "INFO"
+    
+# Notifications
+notifications:
+  telegram:
+    enabled: false
+    bot_token: ${TELEGRAM_BOT_TOKEN}
+    chat_id: ${TELEGRAM_CHAT_ID}
+    
+    # Notification triggers
+    triggers:
+      - competition_rank_change
+      - high_profit_opportunity
+      - risk_threshold_breach
+      - emergency_stop
+      - daily_summary
+      
+# Development Settings
+development:
+  simulation_mode: false
+  paper_trading: false  # Real trading for competition
+  debug_mode: false
+  
+  # Testing
+  testing:
+    enabled: false
+    test_duration: 3600  # 1 hour
+    test_capital: 0.1  # 0.1 SOL for testing
+    
+# Advanced Features
+advanced:
+  # WebSocket optimization
+  websocket:
+    enabled: true
+    reconnect_interval: 30
+    ping_interval: 20
+    
+  # Order optimization
+  order_optimization:
+    batch_orders: true
+    order_bundling: true
+    smart_routing: true
+    
+  # Market making
+  market_making:
+    enabled: true
+    spread_capture: 0.001  # 0.1% spread capture
+    inventory_management: true
+    
+# Competition Specific Settings
+competition_specific:
+  # Volume competition tactics
+  volume_tactics:
+    rapid_grid_adjustment: true
+    high_frequency_rebalancing: true
+    cross_pair_cycling: true
+    optimal_order_sizing: true
+    
+  # PnL competition tactics
+  pnl_tactics:
+    profit_momentum_riding: true
+    loss_cutting_optimization: true
+    opportunity_prioritization: true
+    capital_allocation_optimization: true
+    
+  # Fair play compliance
+  fair_play:
+    no_wash_trading: true
+    legitimate_volume_only: true
+    proper_risk_management: true
+    api_rate_limit_compliance: true
+
+# Expected Performance Targets
+performance_targets:
+  # Volume targets
+  volume_targets:
+    daily_volume: 50000  # $50k daily
+    monthly_volume: 1500000  # $1.5M monthly
+    volume_rank_target: 10  # Top 10 volume
+    
+  # PnL targets
+  pnl_targets:
+    daily_return: 0.008  # 0.8% daily
+    monthly_return: 0.25  # 25% monthly
+    annual_return: 3.0  # 300% annual
+    pnl_rank_target: 5  # Top 5 PnL
+    
+  # Risk targets
+  risk_targets:
+    max_daily_drawdown: 0.03  # 3%
+    max_monthly_drawdown: 0.10  # 10%
+    sharpe_ratio_target: 2.0
+    win_rate_target: 0.65  # 65%

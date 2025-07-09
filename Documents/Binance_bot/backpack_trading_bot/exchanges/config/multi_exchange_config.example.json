@@ -1,0 +1,70 @@
+{
+  "api_keys": {
+    "binance": {
+      "api_key": "your_binance_api_key_here",
+      "api_secret": "your_binance_secret_here",
+      "testnet": true
+    },
+    "backpack": {
+      "api_key": "your_backpack_api_key_here", 
+      "api_secret": "your_backpack_secret_here",
+      "testnet": true
+    }
+  },
+  "trading_config": {
+    "initial_capital": 10000,
+    "max_position_size": 0.05,
+    "confidence_threshold": 0.6,
+    "risk_per_trade": 0.02,
+    "max_daily_loss": 0.05,
+    "emergency_stop_loss": 0.10
+  },
+  "arbitrage_config": {
+    "min_profit_threshold": 0.001,
+    "max_position_size": 5000,
+    "execution_timeout": 30,
+    "price_staleness_threshold": 5
+  },
+  "grid_config": {
+    "base_grid_spacing": 0.01,
+    "max_grid_levels": 10,
+    "grid_position_size": 0.02,
+    "volatility_multiplier": 1.5
+  },
+  "risk_management": {
+    "max_portfolio_delta": 0.05,
+    "delta_rebalance_threshold": 0.02,
+    "margin_safety_factor": 0.3,
+    "max_correlation_exposure": 0.7
+  },
+  "execution_config": {
+    "order_timeout": 60,
+    "max_slippage": 0.005,
+    "retry_attempts": 3,
+    "rate_limit_buffer": 0.8
+  },
+  "monitoring": {
+    "log_level": "INFO",
+    "performance_update_interval": 300,
+    "health_check_interval": 60,
+    "backup_interval": 3600
+  },
+  "symbols": [
+    "BTCUSDT",
+    "ETHUSDT",
+    "BNBUSDT"
+  ],
+  "timeframes": [
+    "1m",
+    "5m", 
+    "15m",
+    "1h",
+    "4h"
+  ],
+  "market_regimes": {
+    "bull_market_multiplier": 1.5,
+    "bear_market_multiplier": 0.7,
+    "high_volatility_threshold": 0.05,
+    "trend_confirmation_period": 24
+  }
+}

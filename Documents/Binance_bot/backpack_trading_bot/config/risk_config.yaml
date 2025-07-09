@@ -1,0 +1,196 @@
+# Risk Management Configuration
+# Comprehensive risk controls and safety measures
+
+# Account Protection
+account:
+  # Maximum daily loss (USD)
+  max_daily_loss: 500
+  
+  # Maximum drawdown (% of account)
+  max_drawdown: 0.15
+  
+  # Maximum position size (% of account)
+  max_position_size: 0.8
+  
+  # Emergency stop conditions
+  emergency_stop:
+    enabled: true
+    daily_loss_threshold: 1000
+    drawdown_threshold: 0.25
+    consecutive_losses: 10
+
+# Position Risk Management
+position:
+  # Stop loss settings
+  stop_loss:
+    enabled: true
+    default_pct: 0.02  # 2% stop loss
+    trailing_stop: true
+    trailing_distance: 0.01  # 1% trailing distance
+  
+  # Take profit settings
+  take_profit:
+    enabled: true
+    default_pct: 0.04  # 4% take profit
+    partial_profit:
+      enabled: true
+      levels: [0.02, 0.03, 0.04]  # Take profit at 2%, 3%, 4%
+      percentages: [0.3, 0.3, 0.4]  # Close 30%, 30%, 40%
+  
+  # Position sizing limits
+  sizing:
+    min_position_usd: 10
+    max_position_usd: 5000
+    max_positions_per_symbol: 5
+    max_total_positions: 20
+
+# Market Risk Controls
+market:
+  # Volatility filters
+  volatility:
+    max_atr_pct: 0.05  # Max 5% ATR
+    volatility_multiplier: 2.0
+    high_volatility_threshold: 0.03
+    
+  # Spread controls
+  spread:
+    max_spread_pct: 0.001  # Max 0.1% spread
+    spread_multiplier: 1.5
+    
+  # Volume filters
+  volume:
+    min_volume_24h: 1000000  # Min $1M 24h volume
+    volume_threshold_multiplier: 0.5
+    
+  # Time-based restrictions
+  time_restrictions:
+    avoid_major_news: true
+    avoid_market_open: false
+    avoid_market_close: false
+    restricted_hours: []  # UTC hours to avoid trading
+
+# Strategy-Specific Risk Controls
+strategy_risk:
+  # Grid Trading Risk
+  grid_trading:
+    max_grids: 30
+    max_grid_spacing: 0.01  # 1% max spacing
+    min_grid_spacing: 0.001  # 0.1% min spacing
+    position_concentration_limit: 0.3  # Max 30% in one direction
+    
+  # Arbitrage Risk
+  arbitrage:
+    max_execution_time: 10  # seconds
+    min_profit_after_slippage: 0.05  # 0.05% minimum profit
+    max_price_impact: 0.002  # 0.2% max price impact
+    correlation_threshold: 0.8  # Min correlation for pairs
+    
+  # Delta Neutral Risk
+  delta_neutral:
+    max_delta_exposure: 0.1  # 10% max delta
+    hedge_ratio_bounds: [0.8, 1.2]  # Hedge ratio limits
+    funding_rate_threshold: 0.01  # 1% funding rate limit
+    basis_risk_limit: 0.005  # 0.5% basis risk limit
+
+# Liquidity Risk Management
+liquidity:
+  # Minimum liquidity requirements
+  min_bid_ask_size: 1000  # Min $1000 on both sides
+  min_order_book_depth: 5000  # Min $5000 total depth
+  
+  # Slippage protection
+  slippage:
+    max_slippage_pct: 0.002  # 0.2% max slippage
+    slippage_buffer: 0.0005  # 0.05% buffer
+    
+  # Order execution limits
+  execution:
+    max_order_size_pct: 0.1  # Max 10% of daily volume
+    order_timeout: 60  # seconds
+    max_partial_fills: 3
+
+# System Risk Controls
+system:
+  # API rate limiting
+  api_limits:
+    requests_per_minute: 1000
+    orders_per_10_seconds: 100
+    orders_per_minute: 1000
+    
+  # Connection monitoring
+  connection:
+    max_latency_ms: 1000
+    connection_timeout: 30
+    reconnection_attempts: 5
+    
+  # Error handling
+  error_handling:
+    max_consecutive_errors: 5
+    error_cooldown_seconds: 300
+    critical_error_shutdown: true
+
+# Compliance and Regulatory
+compliance:
+  # Trading restrictions
+  restricted_symbols: []
+  restricted_countries: []
+  
+  # Reporting requirements
+  reporting:
+    trade_logging: true
+    pnl_reporting: true
+    risk_reporting: true
+    
+  # Audit trail
+  audit:
+    enabled: true
+    retention_days: 90
+    detailed_logging: true
+
+# Risk Monitoring and Alerts
+monitoring:
+  # Real-time monitoring
+  realtime_checks:
+    position_size: true
+    drawdown: true
+    volatility: true
+    correlation: true
+    
+  # Alert thresholds
+  alerts:
+    position_size_warning: 0.7  # 70% of max position
+    drawdown_warning: 0.1  # 10% drawdown
+    volatility_warning: 0.03  # 3% volatility
+    
+  # Alert channels
+  alert_channels:
+    telegram: true
+    email: true
+    log_file: true
+    
+  # Monitoring intervals
+  check_intervals:
+    position_risk: 60  # seconds
+    market_risk: 300  # seconds
+    system_health: 120  # seconds
+
+# Emergency Procedures
+emergency:
+  # Automatic shutdown triggers
+  shutdown_triggers:
+    max_loss_exceeded: true
+    system_error: true
+    api_failure: true
+    
+  # Emergency actions
+  actions:
+    close_all_positions: true
+    cancel_all_orders: true
+    stop_new_trades: true
+    send_notifications: true
+    
+  # Recovery procedures
+  recovery:
+    manual_intervention_required: true
+    automated_restart: false
+    recovery_checklist: true

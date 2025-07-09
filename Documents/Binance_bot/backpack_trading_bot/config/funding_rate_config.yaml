@@ -1,0 +1,227 @@
+# 🎯 Funding Rate Capture Bot Configuration
+# Specialized configuration for delta-neutral funding rate capture
+
+# API Configuration
+api:
+  key: ${BINANCE_API_KEY}
+  secret: ${BINANCE_API_SECRET}
+  testnet: false
+
+# Funding Rate Strategy Configuration
+strategy:
+  type: 'delta_neutral'
+  
+  # Delta Neutral Funding Capture
+  delta_neutral:
+    # Trading Configuration
+    spot_symbol: 'BTCUSDT'
+    futures_symbol: 'BTCUSDT'
+    base_position_size: 1000  # USDT base position
+    
+    # Funding Optimization
+    funding_optimization: true
+    min_funding_rate: 0.0001  # 0.01% minimum to consider
+    target_funding_rate: 0.0005  # 0.05% target rate
+    funding_check_interval: 1800  # 30 minutes
+    
+    # Delta Neutral Parameters
+    hedge_ratio: 1.0  # Perfect hedge initially
+    hedge_ratio_bounds: [0.8, 1.2]  # Allowed hedge ratio range
+    delta_rebalance_threshold: 0.02  # 2% delta threshold
+    max_delta_exposure: 0.05  # 5% max delta exposure
+    
+    # Grid Configuration for Profit Capture
+    grid_levels: 20
+    grid_spacing: 0.002  # 0.2% spacing
+    grid_base_size: 50  # USDT per grid level
+    grid_max_levels: 10  # Max active levels per side
+    
+    # Position Management
+    position_rebalance_frequency: 3600  # 1 hour
+    emergency_hedge_threshold: 0.10  # 10% emergency hedge trigger
+    
+    # Funding Collection Strategy
+    funding_collection:
+      # Symbols to monitor for funding opportunities
+      symbols: ['BTCUSDT', 'ETHUSDT', 'ADAUSDT', 'BNBUSDT']
+      
+      # Funding rate thresholds
+      high_funding_threshold: 0.001  # 0.1% = very attractive
+      medium_funding_threshold: 0.0005  # 0.05% = attractive
+      low_funding_threshold: 0.0001  # 0.01% = minimum
+      
+      # Position sizing based on funding rate
+      high_funding_position_multiplier: 1.5
+      medium_funding_position_multiplier: 1.0
+      low_funding_position_multiplier: 0.5
+      
+      # Funding persistence requirements
+      min_funding_persistence: 3  # Minimum funding periods in same direction
+      funding_trend_weight: 0.3  # Weight given to funding trends
+
+# Risk Management - Optimized for Funding Strategy
+risk:
+  # Account Protection
+  max_daily_loss: 200  # USDT - tighter for funding strategy
+  max_drawdown: 0.10  # 10% max drawdown
+  max_position_size: 0.6  # 60% of account max
+  
+  # Delta Neutral Specific Risks
+  max_delta_exposure: 0.05  # 5% max delta exposure
+  delta_monitoring_interval: 30  # 30 seconds
+  emergency_delta_threshold: 0.15  # 15% emergency threshold
+  
+  # Funding Rate Risks
+  negative_funding_limit: -0.0005  # -0.05% max negative funding
+  funding_rate_volatility_limit: 0.003  # 0.3% funding volatility limit
+  
+  # Position Controls
+  max_positions_per_symbol: 3
+  position_concentration_limit: 0.4  # 40% max in single symbol
+  
+  # Emergency Controls
+  emergency_stop:
+    enabled: true
+    daily_loss_trigger: 300  # USDT
+    delta_exposure_trigger: 0.20  # 20%
+    consecutive_losses: 5
+
+# Position Management - Funding Optimized
+position:
+  # Sizing Strategy
+  sizing_method: 'funding_weighted'  # Weight by funding rate
+  base_position_pct: 0.15  # 15% base position
+  
+  # Funding-Based Allocation
+  funding_allocation:
+    high_funding_allocation: 0.5   # 50% to high funding opportunities
+    medium_funding_allocation: 0.3  # 30% to medium funding
+    low_funding_allocation: 0.2    # 20% to low funding
+  
+  # Rebalancing
+  rebalance_frequency: 3600  # 1 hour
+  rebalance_threshold: 0.03  # 3% threshold
+  
+  # Hedge Management
+  hedge_rebalance_frequency: 1800  # 30 minutes
+  hedge_slippage_tolerance: 0.001  # 0.1%
+
+# Performance Tracking - Funding Focused
+performance:
+  # Funding-Specific Metrics
+  funding_metrics:
+    - 'total_funding_earned'
+    - 'daily_funding_rate'
+    - 'funding_efficiency'
+    - 'funding_consistency'
+    - 'funding_vs_market_correlation'
+  
+  # Risk Metrics
+  risk_metrics:
+    - 'delta_exposure_variance'
+    - 'hedge_effectiveness'
+    - 'funding_capture_ratio'
+    - 'market_neutrality_score'
+  
+  # Tracking Intervals
+  track_intervals: ['1h', '4h', '1d', '1w']
+  
+  # Reporting
+  funding_report_frequency: 86400  # Daily
+  performance_summary_frequency: 3600  # Hourly
+
+# Logging - Detailed for Funding Strategy
+logging:
+  level: 'INFO'
+  file: 'logs/funding_rate_bot.log'
+  max_bytes: 20971520  # 20MB
+  backup_count: 5
+  
+  # Component-specific logging
+  components:
+    funding_collector: 'INFO'
+    delta_manager: 'INFO'
+    risk_manager: 'INFO'
+    position_manager: 'INFO'
+    grid_manager: 'DEBUG'
+
+# Notifications - Funding Focused
+notifications:
+  telegram:
+    enabled: true
+    bot_token: ${TELEGRAM_BOT_TOKEN}
+    chat_id: ${TELEGRAM_CHAT_ID}
+    
+    # Funding-specific notifications
+    funding_triggers:
+      - 'high_funding_opportunity'  # >0.1% funding rate
+      - 'funding_collected'         # Funding payment received
+      - 'delta_exposure_warning'    # Delta exposure >3%
+      - 'emergency_rebalance'       # Emergency hedge triggered
+      - 'daily_funding_summary'     # Daily funding summary
+      - 'negative_funding_alert'    # Negative funding rate
+    
+    # Alert thresholds
+    high_funding_alert: 0.001  # 0.1%
+    delta_exposure_alert: 0.03  # 3%
+    pnl_alert_threshold: 50  # USDT
+
+# Development Settings
+development:
+  paper_trading: true  # Start with paper trading
+  simulation_mode: false
+  
+  # Funding simulation
+  simulate_funding_rates: false
+  funding_rate_scenarios: ['high_positive', 'high_negative', 'volatile']
+  
+  # Debug settings
+  debug_funding_collector: false
+  debug_delta_manager: false
+  log_all_trades: true
+
+# Advanced Features
+advanced:
+  # Funding Rate Prediction
+  funding_prediction:
+    enabled: true
+    prediction_model: 'moving_average'
+    prediction_window: 24  # 24 funding periods
+    
+  # Cross-Exchange Funding
+  cross_exchange:
+    enabled: false  # Disabled for now
+    exchanges: ['binance', 'bybit']
+    arbitrage_threshold: 0.0005  # 0.05%
+  
+  # Machine Learning
+  ml_optimization:
+    enabled: false
+    model_type: 'random_forest'
+    features: ['funding_rate', 'volatility', 'volume']
+    
+  # API Optimization
+  api_optimization:
+    websocket_enabled: true
+    rate_limit_buffer: 0.8  # 80% of rate limit
+    batch_operations: true
+
+# Monitoring and Alerting
+monitoring:
+  # Health Checks
+  health_checks:
+    funding_data_freshness: 600  # 10 minutes
+    delta_calculation_frequency: 60  # 1 minute
+    position_sync_check: 300  # 5 minutes
+    
+  # Performance Monitoring
+  performance_monitoring:
+    funding_efficiency_threshold: 0.8  # 80% efficiency
+    delta_neutrality_threshold: 0.05  # 5% max delta
+    pnl_tracking_window: 86400  # 24 hours
+    
+  # Alert Escalation
+  alert_escalation:
+    critical_funding_loss: 3  # 3 consecutive negative funding
+    high_delta_exposure: 2   # 2 consecutive high delta alerts
+    system_health_failure: 1  # Immediate alert

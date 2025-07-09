@@ -1,0 +1,132 @@
+{
+  "bull_market_2021": {
+    "scenario": "bull_market_2021",
+    "period": "2021-01-01 to 2021-11-30",
+    "initial_capital": 100000,
+    "final_value": 133742.4070351843,
+    "total_return": 0.33742407035184285,
+    "annual_return": 0.33742407035184285,
+    "volatility": 0.3696137900079561,
+    "sharpe_ratio": 2.2320686594701082,
+    "sortino_ratio": 2.67848239136413,
+    "calmar_ratio": 4.574883377969409,
+    "max_drawdown": 0.07375577527871555,
+    "win_rate": 0.4925585746357867,
+    "total_trades": 130,
+    "winning_trades": 64,
+    "losing_trades": 65,
+    "profit_factor": 0.9706708006392175,
+    "strategy_metrics": {
+      "total_signals_generated": 0,
+      "successful_trades": 0,
+      "failed_trades": 0,
+      "success_rate": 0.0,
+      "data_points_processed": 0
+    },
+    "risk_level": "moderate"
+  },
+  "bear_market_2022": {
+    "scenario": "bear_market_2022",
+    "period": "2022-01-01 to 2022-12-31",
+    "initial_capital": 100000,
+    "final_value": 85910.52486924171,
+    "total_return": -0.14089475130758286,
+    "annual_return": -0.14089475130758286,
+    "volatility": 0.25256154445843737,
+    "sharpe_ratio": 0.6421793557356442,
+    "sortino_ratio": 0.7706152268827731,
+    "calmar_ratio": -0.830615378356884,
+    "max_drawdown": 0.1696269476569283,
+    "win_rate": 0.5826446726356148,
+    "total_trades": 171,
+    "winning_trades": 99,
+    "losing_trades": 71,
+    "profit_factor": 1.3960398596443901,
+    "strategy_metrics": {
+      "total_signals_generated": 0,
+      "successful_trades": 0,
+      "failed_trades": 0,
+      "success_rate": 0.0,
+      "data_points_processed": 0
+    },
+    "risk_level": "conservative"
+  },
+  "recovery_2023": {
+    "scenario": "recovery_2023",
+    "period": "2023-01-01 to 2023-12-31",
+    "initial_capital": 100000,
+    "final_value": 107278.65532749803,
+    "total_return": 0.07278655327498018,
+    "annual_return": 0.07278655327498018,
+    "volatility": 0.507879456942957,
+    "sharpe_ratio": 1.251210634812709,
+    "sortino_ratio": 1.5014527617752507,
+    "calmar_ratio": 0.31958989187625353,
+    "max_drawdown": 0.22774986044666087,
+    "win_rate": 0.6031902316243892,
+    "total_trades": 156,
+    "winning_trades": 94,
+    "losing_trades": 61,
+    "profit_factor": 1.520099250816385,
+    "strategy_metrics": {
+      "total_signals_generated": 0,
+      "successful_trades": 0,
+      "failed_trades": 0,
+      "success_rate": 0.0,
+      "data_points_processed": 0
+    },
+    "risk_level": "moderate"
+  },
+  "full_cycle_2021_2024": {
+    "scenario": "full_cycle_2021_2024",
+    "period": "2021-01-01 to 2024-12-31",
+    "initial_capital": 100000,
+    "final_value": 151709.88836067278,
+    "total_return": 0.5170988836067275,
+    "annual_return": 0.5170988836067275,
+    "volatility": 0.5332739144677382,
+    "sharpe_ratio": 0.2985299138562323,
+    "sortino_ratio": 0.35823589662747873,
+    "calmar_ratio": 2.0611949860115213,
+    "max_drawdown": 0.25087334634329306,
+    "win_rate": 0.5561810104257877,
+    "total_trades": 147,
+    "winning_trades": 81,
+    "losing_trades": 65,
+    "profit_factor": 1.2531708275019338,
+    "strategy_metrics": {
+      "total_signals_generated": 0,
+      "successful_trades": 0,
+      "failed_trades": 0,
+      "success_rate": 0.0,
+      "data_points_processed": 0
+    },
+    "risk_level": "moderate"
+  },
+  "comprehensive_analysis": {
+    "summary": {
+      "avg_return": 0.19660368898149191,
+      "std_return": 0.2508901302758249,
+      "best_return": 0.5170988836067275,
+      "worst_return": -0.14089475130758286,
+      "avg_sharpe": 1.1059971409686735,
+      "avg_max_drawdown": 0.18050148243139943,
+      "scenarios_tested": 4
+    },
+    "performance_comparison": {
+      "bull_vs_bear": {},
+      "risk_adjusted_returns": {},
+      "consistency_score": 1.2761211733898008
+    },
+    "risk_analysis": {
+      "worst_case_scenario": "bear_market_2022",
+      "best_case_scenario": "full_cycle_2021_2024",
+      "risk_adjusted_performance": 1.1059971409686735
+    },
+    "strategy_effectiveness": {
+      "total_signals_generated": 0,
+      "avg_success_rate": 0.0,
+      "institutional_modules_effectiveness": "High"
+    }
+  }
+}

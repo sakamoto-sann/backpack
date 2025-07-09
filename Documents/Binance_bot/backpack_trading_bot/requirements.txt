@@ -1,0 +1,71 @@
+# Core Dependencies
+python-binance==1.0.19
+websockets==11.0.3
+aiohttp==3.8.5
+asyncio-throttle==1.0.2
+
+# Data Processing
+pandas==2.0.3
+numpy==1.24.3
+scipy==1.11.1
+
+# Technical Analysis
+ta-lib==0.4.28
+talib==0.3.3
+
+# Configuration
+PyYAML==6.0.1
+python-dotenv==1.0.0
+
+# Database
+sqlite3
+sqlalchemy==2.0.19
+
+# Logging
+logging
+loguru==0.7.0
+
+# Notifications
+python-telegram-bot==20.3
+smtplib
+
+# Web Framework (for API)
+flask==2.3.2
+flask-cors==4.0.0
+
+# Backtesting
+backtrader==1.9.78.123
+matplotlib==3.7.2
+seaborn==0.12.2
+
+# Performance Optimization
+numba==0.57.1
+cython==0.29.36
+
+# Testing
+pytest==7.4.0
+pytest-asyncio==0.21.1
+
+# Development
+black==23.7.0
+flake8==6.0.0
+mypy==1.5.1
+
+# Deployment
+gunicorn==21.2.0
+supervisor==4.2.5
+docker==6.1.3
+
+# Monitoring
+prometheus-client==0.17.1
+grafana-api==1.0.3
+
+# Security
+cryptography==41.0.3
+python-jose==3.3.0
+
+# Utils
+click==8.1.6
+tqdm==4.65.0
+colorama==0.4.6
+rich==13.5.2
